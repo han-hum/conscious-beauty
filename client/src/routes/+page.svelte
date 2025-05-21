@@ -1,6 +1,11 @@
-<h1>Welcome to Conscious Beauty</h1>
-<nav>
-  <a href="/login">Login</a> |
-  <a href="/product/123456">Sample Product</a> |
-  <a href="/profile">Your Profile</a>
-</nav> 
+<script></script>
+
+<h1>ILUS.me</h1>  <!-- this will be logo -->
+
+<section class="hero">
+  <div class="overlay">
+    <h1>Conscious Beauty Starts Here</h1>
+    <input type="text" placeholder="Search for a product..." />
+    <button>🔍</button>
+  </div>
+</section>

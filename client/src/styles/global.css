@@ -1,27 +1,69 @@
 body {
-    font-family: "Montserrat", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: 300;
-    font-style: light;
-    margin: 0;
-    padding: 0;
-    background-color: #fefefe;
-    color: #1a1a1a;
-  }
-  
-header{ 
-    background-color: #fefefe;
-    border-bottom: 1px solid #1a1a1a;
-    padding: 2rem;
-    margin-bottom: 4rem;
-    text-align: center;
-    font-size: 0.85rem;
-    color: #777;
-    border-bottom: 1px solid #1a1a1a;
+  font-family: 'Montserrat', sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: light;
+  margin: 0;
+  padding: 0;
+  background-color: #fefefe;
+  color: #1a1a1a;
+}
+
+header {
+  background-color: #fefefe;
+  border-bottom: 1px solid #1a1a1a;
+  padding: 2rem;
+  margin-bottom: 4rem;
+  text-align: center;
+  font-size: 0.85rem;
+  color: #777;
+  border-bottom: 1px solid #1a1a1a;
 }
 
 main {
   padding: 2rem;
+}
+
+.hero {
+  background-image: url('/photos/carousel1.jpg');
+  background-size: cover;
+  background-position: center;
+  height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.overlay {
+  background: rgba(255, 255, 255, 0.85);
+  padding: 2rem;
+  text-align: center;
+  border-radius: 1rem;
+}
+
+h1 {
+  font-family: 'Montserrat', sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  /* font-style: regular; */
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+p {
+  text-align: center;
+}
+
+nav a {
+  font-weight: 400;
+  margin-right: 1.5rem;
+  color: #0070f3;
+  text-decoration: none;
+}
+
+nav a:hover {
+  text-decoration: underline;
 }
 
 footer {
@@ -32,28 +74,3 @@ footer {
   padding: 2rem;
   border-top: 1px solid #1a1a1a;
 }
-
-  h1 {
-    font-family: "Montserrat", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: 400;
-    /* font-style: regular; */
-    font-size: 2rem;
-    margin-bottom: 1rem;
-  }
-
-  p {
-    text-align: center;
-  }
-  
-  nav a {
-    font-weight: 400;
-    margin-right: 1.5rem;
-    color: #0070f3;
-    text-decoration: none;
-  }
-  
-  nav a:hover {
-    text-decoration: underline;
-  } 
-  
