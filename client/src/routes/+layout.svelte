@@ -3,8 +3,9 @@
 </script>
 
 <header>
-    <nav>
-        <a href="/">Home</a>
+    <nav class="header-right">
+      <a href="/">Home</a>
+      <a href="/login">Login / Sign Up</a> <!-- temporary-->
     </nav>
 </header>
 <main>
@@ -19,5 +20,3 @@
         <a href="/">Conscious Beauty</a>
       </nav>
 </footer>
-
-  
