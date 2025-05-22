@@ -2,40 +2,23 @@
   import { supabase } from '$lib/supabaseClient';
   import { onMount } from 'svelte';
 
-  /*dummydata for testing */
-  let products = [
-    {
-      name: 'Test Serum',
-      description: 'A nourishing serum with hyaluronic acid.',
-      image_url: '/photos/carousel1.jpg'
-    },
-    {
-      name: 'Glow Cleanser',
-      description: 'Brightening daily face wash.',
-      image_url: '/photos/carousel1.jpg'
-    },
-    {
-      name: 'Hydration Cream',
-      description: 'Intensive moisture for dry skin.',
-      image_url: '/photos/carousel1.jpg'
-    }
-  ];
+let products = [];
 
+onMount(async () => {  /*!CORS is used just for development fetch and will be replaced later!*/
+  const response = await fetch('https://corsproxy.io/?https://world.openbeautyfacts.org/category/cosmetics.json');
 
-  /*
-  onMount(async () => {
-    const { data, error } = await supabase
-      .from('products')
-      .select('*')
-      .order('created_at', { ascending: false });
+  const json = await response.json();
 
-    if (error) {
-      console.error('Error fetching products:', error.message);
-    } else {
-      products = data;
-    }
-  });
-  */
+  //fetch 10 example products
+  products = (json.products || [])
+    .filter(p => p.product_name && p.image_url)
+    .slice(0, 10)
+    .map(p => ({
+      name: p.product_name,
+      description: p.brands || 'No brand info',
+      image_url: p.image_url
+    }));
+});
 
 </script>
 
