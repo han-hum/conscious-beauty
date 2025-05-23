@@ -2,7 +2,7 @@
   import { supabase } from '$lib/supabaseClient';
   import { onMount } from 'svelte';
 
-  let products = []; /* */
+  let products = [];
 
 onMount(async () => {
   const { data, error } = await supabase.from('products').select('*');

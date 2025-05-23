@@ -36,9 +36,6 @@
 </header>
 <main>
     <slot />
-    <h1>
-        <p>Welcome to Ilus.me</p>
-    </h1>
     <!-- Content -->
 </main>
 <footer>
