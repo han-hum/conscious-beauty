@@ -10,36 +10,106 @@ body {
 
 header {
   background-color: #344648;
+  padding: 1rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
   border-bottom: 1px solid #1a1a1a;
-  padding: 2rem;
-  margin-bottom: 4rem;
-  text-align: right;
-  font-size: 0.85rem;
-  color: #ffffff;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+}
+
+.logo-img {  /*logo size needs editing*/
+  height: 48px;
+  max-width: 180px;
+  object-fit: contain;
+  padding: 0.5rem 1rem;
 }
 
 main {
+  min-height: calc(100vh - 200px);
   padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .hero {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  height: 80vh;
+  padding: 2rem;
+  padding-top: 5vh;
   background-image: url('/photos/carousel1.jpg');
   background-size: cover;
   background-position: center;
-  min-height: 60vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
+  background-repeat: no-repeat;
   border: 1px solid #fbe0c3;
   border-radius: 1rem;
+  transition: all 4s ease-in-out;
 }
 
 .overlay {
-  background: rgba(255, 255, 255, 0.85);
-  padding: 2rem;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 3rem 2rem;
   text-align: center;
   border-radius: 1rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+
+  width: clamp(300px, 40vw, 600px); /* responsive & capped */
+  min-height: 250px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  margin-top: 5vh;
+}
+
+
+
+.overlay h1 {
+  margin-bottom: 2rem;
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.overlay input {
+  padding: 0.75rem;
+  font-size: 1rem;
+  width: 85%;
+  max-width: 500px;
+  margin-bottom: 1rem;
+  border-radius: 0.5rem;
+  border: 1px solid #ccc;
+}
+
+.overlay button {
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  background-color: #8aa191;
+  color: white;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+
+
+.overlay button:hover {
+  background-color: #7aa191;
+}
+
+.greeting {
+  font-weight: 500;
+  font-size: 0.95rem;
+  color: #344648;
+  margin-bottom: 1rem;
 }
 
 h1 {
@@ -68,6 +138,10 @@ nav a {
 nav a:hover {
   text-decoration: underline;
   color: #fdebdd;
+}
+
+nav button {
+  margin-left: 1rem;
 }
 
 .product-preview {

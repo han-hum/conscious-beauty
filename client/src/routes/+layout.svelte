@@ -24,14 +24,24 @@
 </script>
 
 <header>
+  
+  <a href="/" class="logo-container">
+    <img src="/logoPG.png" alt="ILUS.me logo" class="logo-img" />
+  </a>
+
     <nav class="header-right">
+
         <a href="/">Home</a>
-        <a href="/login">Login / Sign Up</a>
+        <a href="/product">Products</a>
+        <a href="/about">About</a>
+        {#if !$user}
+        <a href="/login">Login/Sign Up</a>
+      {:else}
+        <button on:click={handleLogout}>Log out</button>
+      {/if}
       
-        {#if $user}
-          <span>Hello, {$user.email}</span>  <!-- this will be name -->
-          <button on:click={handleLogout}>Log out</button>
-        {/if}
+      
+      
     </nav>
 </header>
 <main>

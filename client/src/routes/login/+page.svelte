@@ -2,6 +2,8 @@
 // @ts-nocheck
 
   import { supabase } from '$lib/supabaseClient';
+  import { goto } from '$app/navigation';
+  import { onMount } from 'svelte';
 
   let email = '';
   let password = '';
@@ -20,6 +22,7 @@
     } else {
       message = 'Logged in successfully!';
       error = '';
+      goto('/profile');
     }
   };
 
