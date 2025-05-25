@@ -1,4 +1,8 @@
-body {
+* {
+  box-sizing: border-box;
+}
+
+html, body {
   font-family: 'Montserrat', sans-serif;
   font-optical-sizing: auto;
   font-weight: 300;
@@ -15,7 +19,13 @@ header {
   align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
-  border-bottom: 1px solid #1a1a1a;
+  border-bottom: 1px solid #fbe0c3;
+}
+
+.header-right {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
 }
 
 .logo-container {
@@ -23,11 +33,18 @@ header {
   align-items: center;
 }
 
-.logo-img {  /*logo size needs editing*/
-  height: 48px;
+.logo-img {
+  height: auto;
   max-width: 180px;
   object-fit: contain;
   padding: 0.5rem 1rem;
+}
+
+@media (max-width: 600px) { /*mobile view*/
+  .logo-img {
+    max-width: 140px;
+    padding: 0.25rem 0.5rem;
+  }
 }
 
 main {
@@ -59,6 +76,7 @@ main {
   padding: 3rem 2rem;
   text-align: center;
   border-radius: 1rem;
+  border-color: #fbe0c3;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 
   width: clamp(300px, 40vw, 600px); /* responsive & capped */
@@ -71,8 +89,6 @@ main {
 
   margin-top: 5vh;
 }
-
-
 
 .overlay h1 {
   margin-bottom: 2rem;
@@ -87,7 +103,7 @@ main {
   max-width: 500px;
   margin-bottom: 1rem;
   border-radius: 0.5rem;
-  border: 1px solid #ccc;
+  border: 1px solid #fbe0c3;
 }
 
 .overlay button {
@@ -99,7 +115,6 @@ main {
   border-radius: 0.5rem;
   cursor: pointer;
 }
-
 
 .overlay button:hover {
   background-color: #7aa191;
@@ -130,9 +145,18 @@ p {
 
 nav a {
   font-weight: 400;
+  font-size: 1.2rem;
   margin-right: 1.5rem;
+  white-space: nowrap;
   color: #ffffff;
   text-decoration: none;
+  text-shadow: 0.5px 0.5px #ffd5c0;
+}
+@media (max-width: 768px) { /*mobile view*/
+  nav a {
+    font-size: 0.95rem;
+    margin-right: 0.8rem;
+  }
 }
 
 nav a:hover {
@@ -152,6 +176,8 @@ nav button {
 .product-preview h2 {
   margin-bottom: 2rem;
   font-weight: 400;
+  text-shadow: 1px 1px 2px #fbe0c3;
+  
 }
 
 .product-grid {
@@ -199,5 +225,13 @@ footer {
   font-size: 0.85rem;
   color: #ffffff;
   padding: 2rem;
-  border-top: 1px solid #1a1a1a;
+  border-top: 1px solid #fbe0c3;
+}
+
+footer nav a {
+  font-size: 0.85rem;
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 300;
+  text-shadow: none;
 }
