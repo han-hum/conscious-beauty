@@ -159,9 +159,27 @@ nav a {
   }
 }
 
+.nav-auth-buttons {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.nav-button {
+  background-color: #8aa191; /* match your branding */
+  color: #fff;
+  border: none;
+  border-radius: 1rem;
+  padding: 0.5rem 1rem;
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
 nav a:hover {
   text-decoration: underline;
-  color: #fdebdd;
+  color: #fff;
 }
 
 nav button {

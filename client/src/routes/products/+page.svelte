@@ -31,12 +31,23 @@
   function filterProducts() {
     if (search.trim()) {
       filteredProducts = products.filter(p =>
-        p.name?.toLowerCase().includes(search.toLowerCase())
-      );
+  p.name?.toLowerCase().includes(search.toLowerCase()) ||
+  p.description?.toLowerCase().includes(search.toLowerCase())
+);
+
     } else {
       filteredProducts = products;
     }
   }
+
+  let user = null;
+
+onMount(async () => {
+  const { data: { session } } = await supabase.auth.getSession();
+  user = session?.user;
+});
+
+
 </script>
 
 <style>
@@ -62,9 +73,17 @@
   }
 </style>
 
-<h1>All Products</h1>
+<h1>Explore Products</h1>
+
+{#if user}
+<a href="/add-product">
+  <button>Add New Product</button>
+</a>
+{/if}
 
 <div class="product-grid">
+  <!--for debuging, REMOVE FOR SCREENSHOTS--> <pre>{JSON.stringify(filteredProducts, null, 2)}</pre>
+
   {#each filteredProducts as product}
     <div class="product-card">
       <img src={product.image_url} alt={product.name} />

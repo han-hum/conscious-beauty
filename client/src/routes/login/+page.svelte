@@ -44,7 +44,61 @@
   };
 </script>
 
+<style>
+  form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 400px;
+  margin: 2rem auto;
+  background-color: #ffffff;
+  padding: 2rem;
+  border-radius: 1.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+input[type="email"],
+input[type="password"] {
+  padding: 0.75rem 1rem;
+  border: 1px solid #ccc;
+  border-radius: 0.75rem;
+  font-size: 1rem;
+}
+
+button {
+  padding: 0.75rem 1rem;
+  background-color: #6d8a7b;
+  color: white;
+  border: none;
+  border-radius: 0.75rem;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.2s;
+}
+
+button:hover {
+  background-color: #5c796d;
+}
+
+h1 {
+  text-align: center;
+  margin-top: 2rem;
+  color: #2e2e2e;
+}
+
+p {
+  text-align: center;
+}
+.logo-container {
+  margin:auto;
+}
+</style>
+
 <h1>Login / Sign Up</h1>
+
+<a href="/" class="logo-container">
+  <img src="/logoDark.png" alt="ILUS.me logo" class="logo-img" />
+</a>
 
 <form on:submit|preventDefault={(e) => {
   // eslint-disable-next-line

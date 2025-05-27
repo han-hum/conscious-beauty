@@ -4,8 +4,9 @@
   import { goto } from '$app/navigation';
   import { writable } from 'svelte/store';
   import { PUBLIC_ADMIN_EMAIL } from '$env/static/public';
+  import { user, userLoaded } from '$lib/stores';
 
-  const user = writable(null);
+
 
   onMount(async () => {
     const {
@@ -14,18 +15,25 @@
 
     const currentUser = session?.user || null;
     user.set(currentUser);
+    userLoaded.set(true); //Session check true
 
-    // Redirect to /admin if admin logs in needs fixing
-    if (currentUser?.email === PUBLIC_ADMIN_EMAIL && window.location.pathname === '/profile') {
+    //Only redirect if already on /profile and it's admin!
+    if (
+      currentUser?.email === PUBLIC_ADMIN_EMAIL &&
+      window.location.pathname === '/profile'
+    ) {
       goto('/admin');
     }
 
+    // Listen for future auth state changes
     supabase.auth.onAuthStateChange((_event, session) => {
       const newUser = session?.user || null;
       user.set(newUser);
 
-      // Redirect again for dynamic login
-      if (newUser?.email === PUBLIC_ADMIN_EMAIL && window.location.pathname === '/profile') {
+      if (
+        newUser?.email === PUBLIC_ADMIN_EMAIL &&
+        window.location.pathname === '/profile'
+      ) {
         goto('/admin');
       }
     });
@@ -34,6 +42,7 @@
   const handleLogout = async () => {
     await supabase.auth.signOut();
     user.set(null);
+    userLoaded.set(false);
   };
 </script>
 
@@ -44,23 +53,24 @@
     <img src="/logoPG.png" alt="ILUS.me logo" class="logo-img" />
   </a>
 
-    <nav class="header-right">
-
-        <a href="/">Home</a>
-        <a href="/product">Products</a>
-        <a href="/about">About</a>
-        {#if !$user}
-        <a href="/login">Login/Sign Up</a>
-      {:else}
-        <button on:click={handleLogout}>Log out</button>
-      {/if}
-      
-
-    </nav>
+  <nav class="header-right">
+    <a href="/">Home</a>
+    <a href="/products">Products</a>
+    <a href="/about">About</a>
+  
+    {#if !$user}
+      <a href="/login">Login/Sign Up</a>
+    {:else}
+      <div class="nav-auth-buttons">
+        <a href="/profile"><button class="nav-button">Profile</button></a>
+        <button class="nav-button" on:click={handleLogout}>Log out</button>
+      </div>
+    {/if}
+  </nav>
+  
 </header>
 <main>
     <slot />
-    <!-- Content -->
 </main>
 <footer>
     <nav>
