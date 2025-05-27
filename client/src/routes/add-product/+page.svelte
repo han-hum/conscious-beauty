@@ -35,24 +35,6 @@
   };
 </script>
 
-<section class="admin-form">
-  <h1>Add New Product</h1>
-
-  <div class="form-card">
-    <label>Name</label>
-    <input bind:value={name} placeholder="Enter product name" />
-
-    <label>Description</label>
-    <textarea bind:value={description} placeholder="Enter description"></textarea>
-
-    <label>Image URL</label>
-    <input bind:value={image_url} placeholder="Enter image URL" />
-
-    <button on:click={handleSubmit}>Add Product</button>
-    {#if message}<p class="message">{message}</p>{/if}
-  </div>
-</section>
-
 <style>
   .admin-form {
     padding: 2rem;
@@ -87,3 +69,22 @@
     color: green;
   }
 </style>
+
+<section class="admin-form">
+  <h1>Add New Product</h1>
+
+  <div class="form-card">
+    <label>Name</label>
+    <input bind:value={name} placeholder="Enter product name" />
+
+    <label>Description</label>
+    <textarea bind:value={description} placeholder="Enter description"></textarea>
+
+    <label>Image URL</label>
+    <input bind:value={image_url} placeholder="Enter image URL" />
+
+    <button on:click={handleSubmit}>Add Product</button>
+    {#if message}<p class="message">{message}</p>{/if}
+  </div>
+</section>
+

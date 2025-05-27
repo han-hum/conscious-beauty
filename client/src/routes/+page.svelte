@@ -39,28 +39,34 @@
 
     const mockProducts = [
   {
-    name: 'Garnier Micellar Water',
-    image: 'https://static.openbeautyfacts.org/images/products/3600542040651/front_en.63.400.jpg',
+    name: 'Everyday Humans Sunscreen SPF50',
+    image: '/photos/fallback2.jpg',
     brand: 'Garnier',
     quantity: '400 ml'
   },
   {
-    name: 'CeraVe Moisturizing Cream',
-    image: 'https://static.openbeautyfacts.org/images/products/3337875597195/front_en.72.400.jpg',
-    brand: 'CeraVe',
-    quantity: '340 g'
+    name: 'Moisturizing Cream',
+    image: '/photos/fallback.png',
+    brand: 'unknown'
   },
   {
     name: 'The Ordinary Niacinamide 10%',
-    image: 'https://static.openbeautyfacts.org/images/products/769915190778/front_en.89.400.jpg',
+    image: 'photos/fallback3.jpg',
     brand: 'The Ordinary',
-    quantity: '30 ml'
   }
 ];
 
+import { goto } from '$app/navigation';
+
+let searchTerm = '';
+
+function handleSearch() {
+  if (searchTerm.trim()) {
+    goto(`/products?search=${encodeURIComponent(searchTerm)}`);
+  }
+}
 
 </script>
-
 
 
 <section class="hero" style={`background-image: url(${images[currentImage]});`}>
@@ -69,14 +75,19 @@
       <p class="greeting">Hello, {user.email}</p>
     {/if}
     <h1>Conscious Beauty Starts Here</h1><br>
-    <input type="text" placeholder="Search for a product..." /><br>
-    <button>🔍</button>
+    <input
+    type="text"
+    bind:value={searchTerm}
+    placeholder="Search for a product..."
+    on:keydown={(e) => e.key === 'Enter' && handleSearch()}
+  /><br>
+  <button on:click={handleSearch}>🔍</button>
   </div>
 </section>
 
 
 <section class="product-preview">
-  <h2>Recently Scanned Products</h2>
+  <h2>Recently Added Products</h2>
   <div class="product-grid">
     {#each mockProducts as product}
       <ProductCard 

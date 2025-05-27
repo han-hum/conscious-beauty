@@ -69,6 +69,7 @@
       <h3>Page Management</h3>
       <button class="btn">Settings</button>
       <button class="btn">Layout</button>
+      <button class="btn">About</button>
     </div>
     <div class="card">
       <h3>Data & Connections</h3>

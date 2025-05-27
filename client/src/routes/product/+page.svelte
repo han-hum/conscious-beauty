@@ -20,8 +20,27 @@
       }
     ];
   </script>
+
+<style>
+  button {
+  background-color: #6d8a7b;
+  color: white;
+  padding: 0.75rem;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+</style>
+
   
   <h2>Explore Products</h2>
+
+  {#if user}
+  <a href="/add-product">
+    <button>Add New Product</button>
+  </a>
+{/if}
+
   
   <div class="product-grid">
     {#each mockProducts as product}
@@ -34,4 +53,4 @@
       </div>
     {/each}
   </div>
-  
+
