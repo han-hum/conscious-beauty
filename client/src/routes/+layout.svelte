@@ -1,19 +1,33 @@
 <script>
   import { supabase } from '$lib/supabaseClient';
   import { onMount } from 'svelte';
+  import { goto } from '$app/navigation';
   import { writable } from 'svelte/store';
+  import { PUBLIC_ADMIN_EMAIL } from '$env/static/public';
 
   const user = writable(null);
 
-  onMount(async () => { //session page load
+  onMount(async () => {
     const {
       data: { session }
     } = await supabase.auth.getSession();
-    user.set(session?.user || null);
 
-    //show if user is loged in/out
+    const currentUser = session?.user || null;
+    user.set(currentUser);
+
+    // Redirect to /admin if admin logs in needs fixing
+    if (currentUser?.email === PUBLIC_ADMIN_EMAIL && window.location.pathname === '/profile') {
+      goto('/admin');
+    }
+
     supabase.auth.onAuthStateChange((_event, session) => {
-      user.set(session?.user || null);
+      const newUser = session?.user || null;
+      user.set(newUser);
+
+      // Redirect again for dynamic login
+      if (newUser?.email === PUBLIC_ADMIN_EMAIL && window.location.pathname === '/profile') {
+        goto('/admin');
+      }
     });
   });
 
@@ -22,6 +36,7 @@
     user.set(null);
   };
 </script>
+
 
 <header>
   
@@ -40,8 +55,7 @@
         <button on:click={handleLogout}>Log out</button>
       {/if}
       
-      
-      
+
     </nav>
 </header>
 <main>

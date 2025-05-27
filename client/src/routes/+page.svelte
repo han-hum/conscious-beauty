@@ -37,24 +37,24 @@
   
     import ProductCard from '$lib/ProductCard.svelte';
 
-const mockProducts = [
+    const mockProducts = [
   {
-    name: 'Lanolin Cream with Vitamin E',
-    image: 'https://static.openbeautyfacts.org/images/products/930/063/110/0019/front_en.73.400.jpg',
-    brand: 'Healthy Care',
-    quantity: '100g'
+    name: 'Garnier Micellar Water',
+    image: 'https://static.openbeautyfacts.org/images/products/3600542040651/front_en.63.400.jpg',
+    brand: 'Garnier',
+    quantity: '400 ml'
   },
   {
-    name: 'Vaseline Blue Seal',
-    image: 'https://static.openbeautyfacts.org/images/products/600/108/739/6355/front_en.18.400.jpg',
-    brand: 'Vaseline',
-    quantity: '50 ml'
+    name: 'CeraVe Moisturizing Cream',
+    image: 'https://static.openbeautyfacts.org/images/products/3337875597195/front_en.72.400.jpg',
+    brand: 'CeraVe',
+    quantity: '340 g'
   },
   {
-    name: 'Cadum Hypoallergenic Wash',
-    image: 'https://static.openbeautyfacts.org/images/products/359/649/000/5286/front_en.62.400.jpg',
-    brand: 'Cadum',
-    quantity: '750 ml'
+    name: 'The Ordinary Niacinamide 10%',
+    image: 'https://static.openbeautyfacts.org/images/products/769915190778/front_en.89.400.jpg',
+    brand: 'The Ordinary',
+    quantity: '30 ml'
   }
 ];
 

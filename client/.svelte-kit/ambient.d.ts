@@ -88,7 +88,7 @@ declare module '$env/static/private' {
  * ```
  */
 declare module '$env/static/public' {
-	
+	export const PUBLIC_ADMIN_EMAIL: string;
 }
 
 /**
@@ -176,6 +176,7 @@ declare module '$env/dynamic/private' {
  */
 declare module '$env/dynamic/public' {
 	export const env: {
+		PUBLIC_ADMIN_EMAIL: string;
 		[key: `PUBLIC_${string}`]: string | undefined;
 	}
 }
