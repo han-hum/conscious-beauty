@@ -2,38 +2,32 @@
   import { supabase } from '$lib/supabaseClient';
   import { onMount } from 'svelte';
   import { goto } from '$app/navigation';
-  import { writable } from 'svelte/store';
+  import { get, writable } from 'svelte/store';
   import { PUBLIC_ADMIN_EMAIL } from '$env/static/public';
+  import { page } from '$app/stores';
   import { user, userLoaded } from '$lib/stores';
-
-
 
   onMount(async () => {
     const {
-      data: { session }
+      data: { session },
     } = await supabase.auth.getSession();
 
     const currentUser = session?.user || null;
     user.set(currentUser);
-    userLoaded.set(true); //Session check true
+    userLoaded.set(true);
 
-    //Only redirect if already on /profile and it's admin!
-    if (
-      currentUser?.email === PUBLIC_ADMIN_EMAIL &&
-      window.location.pathname === '/profile'
-    ) {
+    const path = get(page).url.pathname;
+    if (currentUser?.email === PUBLIC_ADMIN_EMAIL && path === '/profile') {
       goto('/admin');
     }
 
-    // Listen for future auth state changes
     supabase.auth.onAuthStateChange((_event, session) => {
       const newUser = session?.user || null;
       user.set(newUser);
+      userLoaded.set(true);
 
-      if (
-        newUser?.email === PUBLIC_ADMIN_EMAIL &&
-        window.location.pathname === '/profile'
-      ) {
+      const newPath = get(page).url.pathname;
+      if (newUser?.email === PUBLIC_ADMIN_EMAIL && newPath === '/profile') {
         goto('/admin');
       }
     });
@@ -43,12 +37,11 @@
     await supabase.auth.signOut();
     user.set(null);
     userLoaded.set(false);
+    goto('/');
   };
 </script>
 
-
 <header>
-  
   <a href="/" class="logo-container">
     <img src="/logoPG.png" alt="ILUS.me logo" class="logo-img" />
   </a>
@@ -57,7 +50,6 @@
     <a href="/">Home</a>
     <a href="/products">Products</a>
     <a href="/about">About</a>
-  
     {#if !$user}
       <a href="/login">Login/Sign Up</a>
     {:else}
@@ -67,13 +59,14 @@
       </div>
     {/if}
   </nav>
-  
 </header>
+
 <main>
-    <slot />
+  <slot />
 </main>
+
 <footer>
-    <nav>
-        <a href="/">Conscious Beauty</a>
-      </nav>
+  <nav>
+    <a href="/">Conscious Beauty</a>
+  </nav>
 </footer>

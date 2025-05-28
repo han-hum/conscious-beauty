@@ -8,7 +8,9 @@
   let products = [];
 
   onMount(async () => {
-    const { data: { session } } = await supabase.auth.getSession();
+    const {
+      data: { session },
+    } = await supabase.auth.getSession();
     user = session?.user;
     if (!user || user.email !== PUBLIC_ADMIN_EMAIL) goto('/');
 
@@ -18,7 +20,7 @@
 
   const deleteProduct = async (id) => {
     await supabase.from('products').delete().eq('id', id);
-    products = products.filter(p => p.id !== id);
+    products = products.filter((p) => p.id !== id);
   };
 </script>
 
@@ -56,7 +58,6 @@
   .who {
     text-align: left;
   }
-  
 </style>
 
 <div class="admin-container">
@@ -78,7 +79,7 @@
     </div>
     <div class="card">
       <h3>Recent Activity</h3>
-      <div style="height:100px; background:#ddd;">Image placeholder</div>
+      <div style="height:100px; background:#ddd;"></div>
     </div>
     <div class="card">
       <h3>Users</h3>
@@ -93,7 +94,9 @@
         <h4>{product.name}</h4>
         <p>{product.brand}</p>
         <p>{product.quantity}</p>
-        <button class="btn" on:click={() => deleteProduct(product.id)}>Delete</button>
+        <button class="btn" on:click={() => deleteProduct(product.id)}
+          >Delete</button
+        >
       </div>
     {/each}
   </div>

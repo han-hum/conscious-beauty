@@ -11,7 +11,7 @@
 
   onMount(async () => {
     const {
-      data: { session }
+      data: { session },
     } = await supabase.auth.getSession();
     user = session?.user;
 
@@ -21,9 +21,9 @@
   });
 
   const handleSubmit = async () => {
-    const { error } = await supabase.from('products').insert([
-      { name, description, image_url }
-    ]);
+    const { error } = await supabase
+      .from('products')
+      .insert([{ name, description, image_url }]);
     if (error) {
       message = 'Error adding product: ' + error.message;
     } else {
@@ -50,7 +50,8 @@
     flex-direction: column;
     gap: 1rem;
   }
-  input, textarea {
+  input,
+  textarea {
     padding: 0.5rem;
     border-radius: 0.5rem;
     border: 1px solid #ccc;
@@ -78,7 +79,8 @@
     <input bind:value={name} placeholder="Enter product name" />
 
     <label>Description</label>
-    <textarea bind:value={description} placeholder="Enter description"></textarea>
+    <textarea bind:value={description} placeholder="Enter description"
+    ></textarea>
 
     <label>Image URL</label>
     <input bind:value={image_url} placeholder="Enter image URL" />
@@ -87,4 +89,3 @@
     {#if message}<p class="message">{message}</p>{/if}
   </div>
 </section>
-

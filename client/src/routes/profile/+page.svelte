@@ -2,43 +2,15 @@
   import { supabase } from '$lib/supabaseClient';
   import { onMount } from 'svelte';
   import { user, userLoaded } from '$lib/stores';
-  import { get } from 'svelte/store';
-
 
   onMount(async () => {
-    const { data: { session } } = await supabase.auth.getSession();
-    user = session?.user;
+    const {
+      data: { session },
+    } = await supabase.auth.getSession();
+    user.set(session?.user || null);
+    userLoaded.set(true);
   });
 </script>
-
-<div class="profile-page">
-  {#if !$userLoaded}
-  <p>Loading...</p>
-{:else}
-  <h1>Welcome to ILUS.me, {$user?.email || 'User'}!</h1>
-  <p>This is your landing page after login.</p>
-{/if}
-
-  <div class="profile-grid">
-    <div class="profile-card">
-      <h3>Account Settings</h3>
-      <div class="profile-buttons">
-        <button>Edit</button>
-        <button>Security</button>
-      </div>
-    </div>
-
-    <div class="profile-card">
-      <h3>Added Products</h3>
-      <div class="profile-buttons">
-        <a href="/products">
-          <button>Go to Products</button>
-        </a>        
-        <button>Add New</button>
-      </div>
-    </div>
-  </div>
-</div>
 
 <style>
   .profile-page {
@@ -95,3 +67,31 @@
     background-color: #5a7567;
   }
 </style>
+
+<div class="profile-page">
+  {#if !$userLoaded}
+    <p>Loading...</p>
+  {:else}
+    <h2>Welcome to ILUS.me, {$user?.email || 'User'}!</h2>
+  {/if}
+
+  <div class="profile-grid">
+    <div class="profile-card">
+      <h3>Account Settings</h3>
+      <div class="profile-buttons">
+        <button>Edit</button>
+        <button>Security</button>
+      </div>
+    </div>
+
+    <div class="profile-card">
+      <h3>Added Products</h3>
+      <div class="profile-buttons">
+        <a href="/products">
+          <button>Go to Products</button>
+        </a>
+        <button>Add New</button>
+      </div>
+    </div>
+  </div>
+</div>

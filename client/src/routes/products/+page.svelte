@@ -3,21 +3,26 @@
   import { page } from '$app/stores';
   import { onMount } from 'svelte';
   import { derived } from 'svelte/store';
+  import { user } from '$lib/stores';
+  import { get } from 'svelte/store';
 
   let products = [];
   let filteredProducts = [];
 
-  // Set up a derived store to safely access query params
-  const searchStore = derived(page, $page => $page.url.searchParams.get('search') || '');
-
+  // Derived store for search
+  const searchStore = derived(
+    page,
+    ($page) => $page.url.searchParams.get('search') || '',
+  );
   let search = '';
 
-  // Subscribe to the searchStore
-  const unsubscribe = searchStore.subscribe(value => {
+  // Subscribe to query param search term
+  const unsubscribe = searchStore.subscribe((value) => {
     search = value;
     filterProducts();
   });
 
+  // Fetch products once
   onMount(async () => {
     const { data, error } = await supabase.from('products').select('*');
     if (error) {
@@ -30,24 +35,15 @@
 
   function filterProducts() {
     if (search.trim()) {
-      filteredProducts = products.filter(p =>
-  p.name?.toLowerCase().includes(search.toLowerCase()) ||
-  p.description?.toLowerCase().includes(search.toLowerCase())
-);
-
+      filteredProducts = products.filter(
+        (p) =>
+          p.name?.toLowerCase().includes(search.toLowerCase()) ||
+          p.description?.toLowerCase().includes(search.toLowerCase()),
+      );
     } else {
       filteredProducts = products;
     }
   }
-
-  let user = null;
-
-onMount(async () => {
-  const { data: { session } } = await supabase.auth.getSession();
-  user = session?.user;
-});
-
-
 </script>
 
 <style>
@@ -71,19 +67,27 @@ onMount(async () => {
     height: auto;
     border-radius: 0.5rem;
   }
+
+  .add-button {
+    margin-left: 1rem;
+    margin-bottom: 1rem;
+  }
 </style>
 
 <h1>Explore Products</h1>
+<pre>{JSON.stringify(
+    { products, filteredProducts, search, user: $user },
+    null,
+    2,
+  )}</pre>
 
-{#if user}
-<a href="/add-product">
-  <button>Add New Product</button>
-</a>
+{#if $user}
+  <a href="/add-product" class="add-button">
+    <button>Add New Product</button>
+  </a>
 {/if}
 
 <div class="product-grid">
-  <!--for debuging, REMOVE FOR SCREENSHOTS--> <pre>{JSON.stringify(filteredProducts, null, 2)}</pre>
-
   {#each filteredProducts as product}
     <div class="product-card">
       <img src={product.image_url} alt={product.name} />
@@ -92,5 +96,3 @@ onMount(async () => {
     </div>
   {/each}
 </div>
-
-
