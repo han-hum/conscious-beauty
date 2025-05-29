@@ -21,18 +21,25 @@
   });
 
   const handleSubmit = async () => {
-    const { error } = await supabase
-      .from('products')
-      .insert([{ name, description, image_url }]);
-    if (error) {
-      message = 'Error adding product: ' + error.message;
-    } else {
-      message = 'Product added successfully!';
-      name = '';
-      description = '';
-      image_url = '';
-    }
-  };
+  if (!name.trim() || !description.trim() || !image_url.trim()) {
+    message = 'Please fill in all fields.';
+    return;
+  }
+
+  const { error } = await supabase
+    .from('products')
+    .insert([{ name, description, image_url }]);
+
+  if (error) {
+    message = 'Error adding product: ' + error.message;
+  } else {
+    message = 'Product added successfully!';
+    name = '';
+    description = '';
+    image_url = '';
+  }
+};
+
 </script>
 
 <style>

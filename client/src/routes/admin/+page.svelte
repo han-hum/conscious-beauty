@@ -19,9 +19,13 @@
   });
 
   const deleteProduct = async (id) => {
-    await supabase.from('products').delete().eq('id', id);
-    products = products.filter((p) => p.id !== id);
-  };
+  const { error } = await supabase.from('products').delete().eq('id', id);
+  if (error) {
+    console.error('Delete error:', error.message);
+    return;
+  }
+  products = products.filter((p) => p.id !== id);
+};
 </script>
 
 <style>
@@ -95,7 +99,7 @@
     </div>
   </div>
 
-  <h2 style="margin-top: 3rem;">Product Management (CRUD)</h2>
+  <h2 style="margin-top: 3rem;">Product Management</h2>
   <div class="grid">
     {#each products as product}
       <div class="card">

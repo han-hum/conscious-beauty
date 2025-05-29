@@ -37,6 +37,7 @@
     border-color: #fbe0c3;
     background: #f8f8f8;
     box-shadow: 0 1px 7px rgba(247, 70, 70, 0.1);
+    width: 50%;
   }
 
   .profile-card h3 {
@@ -86,11 +87,10 @@
       <h3>Added Products</h3>
       <div class="profile-buttons">
         <a href="/products">
-          <button>Go to Products</button>
+          <button >Go to Products</button>
         </a>
-        <a href="./add-products">
-          <button>Add Products</button>
-        </a>
+        <a href="/add-product"><button>Add Product</button></a> 
+
       </div>
     </div>
   </div>
