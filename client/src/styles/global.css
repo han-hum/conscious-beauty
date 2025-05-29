@@ -200,7 +200,7 @@ nav button {
 
 .product-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: 2rem;
   padding: 0 2rem;
 }
@@ -235,6 +235,21 @@ nav button {
 .product-card button:hover {
   background-color: #5e6c6d;
 }
+
+.view-link button {
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  background-color: #8aa191;
+  color: white;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+
+.view-link button:hover {
+  background-color: #5e6c6d;
+}
+
 
 footer {
   background-color: #344648;

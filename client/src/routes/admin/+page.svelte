@@ -70,20 +70,28 @@
       <h3>Page Management</h3>
       <button class="btn">Settings</button>
       <button class="btn">Layout</button>
-      <button class="btn">About</button>
+      <a href="/products">
+        <button class="btn">Go to Products</button>
+      </a>
     </div>
     <div class="card">
       <h3>Data & Connections</h3>
-      <button class="btn">Supabase Link</button>
-      <button class="btn">API Key</button>
+      <a href="https://supabase.com/">
+        <button class="btn">Supabase</button>
+      </a>
+      <a href="https://openfoodfacts.github.io/openfoodfacts-server/api/ref-v2//">
+        <button class="btn">API</button>
+      </a> 
     </div>
     <div class="card">
       <h3>Recent Activity</h3>
-      <div style="height:100px; background:#ddd;"></div>
+      <div style="height:100px; background:#ddd;"><img src="/logoDark.png" alt="ILUS.me logo" class="logo-img" /></div>
     </div>
     <div class="card">
       <h3>Users</h3>
-      <button class="btn">Manage Users</button>
+      <a href="https://supabase.com/">
+        <button class="btn">Manage Users</button>
+      </a>
     </div>
   </div>
 

@@ -1,11 +1,10 @@
-<script></script>
+<script>
+    import ProductCard from "$lib/ProductCard.svelte";
+import Page from "../+page.svelte";
+
+</script>
 
 <style>
-  .admin-container {
-    padding: 2rem;
-    border-radius: 1rem;
-    border-color: #fbe0c3;
-  }
   .grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -31,7 +30,7 @@
   .btn:hover {
     background: #fbe0c3;
   }
-  .who {
+  p {
     text-align: left;
   }
 </style>
@@ -41,7 +40,14 @@
     <div class="card">
       <h1>About ILUS.me</h1>
       <img src="/logoDark.png" alt="ILUS.me logo" class="logo-img" />
-      <p></p>
+      <p>ILUS.me is a platform developed for promoting more conscious beauty product consumption by providing transparent and honest product information through user-friendly experience.</p>
+        <p>
+        It is inspired by Open Beauty Facts, but is a standalone environment. A front-end, new structural and user-centric features were developed to match the idea, demonstrating how open-source data can be used to engage the wider community.<br></p> 
+        <p>The platform was developed as a graduation project, but is going to be developed further into a working product.</p> 
+        <p>Although Open Beauty Facts is an open-source project, the usage of this current platform, its content and code is NOT allowed until further notice or until before it is discussed with the author of the project.</p>
+        <p>The current version is 1.0 that includes the basic functions and UI/UX. </p>
+        <p><br>More details are to come.
+      </p>
     </div>
     <div class="card">
       <h1>About Open Food Facts</h1>

@@ -26,19 +26,17 @@
 
   .profile-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 2rem;
-    margin-bottom: 2rem;
-    margin-left: 25%;
-    width: 50%;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
   }
 
   .profile-card {
-    border: 1px solid #ccc;
+    padding: 1rem;
     border-radius: 1rem;
-    padding: 1.5rem;
-    background-color: #fff;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    border-color: #fbe0c3;
+    background: #f8f8f8;
+    box-shadow: 0 1px 7px rgba(247, 70, 70, 0.1);
   }
 
   .profile-card h3 {
@@ -90,7 +88,9 @@
         <a href="/products">
           <button>Go to Products</button>
         </a>
-        <button>Add New</button>
+        <a href="./add-products">
+          <button>Add Products</button>
+        </a>
       </div>
     </div>
   </div>
