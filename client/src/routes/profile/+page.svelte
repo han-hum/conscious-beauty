@@ -12,6 +12,34 @@
   });
 </script>
 
+<div class="profile-page">
+  {#if !$userLoaded}
+    <p>Loading...</p>
+  {:else}
+    <h2>Welcome to ILUS.me, {$user?.email || 'User'}!</h2>
+  {/if}
+
+  <div class="profile-grid">
+    <div class="profile-card">
+      <h3>Account Settings</h3>
+      <div class="profile-buttons">
+        <button>Edit</button>
+        <button>Security</button>
+      </div>
+    </div>
+
+    <div class="profile-card">
+      <h3>Added Products</h3>
+      <div class="profile-buttons">
+        <a href="/products">
+          <button>Go to Products</button>
+        </a>
+        <a href="/add-product"><button>Add Product</button></a>
+      </div>
+    </div>
+  </div>
+</div>
+
 <style>
   .profile-page {
     padding: 2rem;
@@ -66,32 +94,3 @@
     background-color: #5a7567;
   }
 </style>
-
-<div class="profile-page">
-  {#if !$userLoaded}
-    <p>Loading...</p>
-  {:else}
-    <h2>Welcome to ILUS.me, {$user?.email || 'User'}!</h2>
-  {/if}
-
-  <div class="profile-grid">
-    <div class="profile-card">
-      <h3>Account Settings</h3>
-      <div class="profile-buttons">
-        <button>Edit</button>
-        <button>Security</button>
-      </div>
-    </div>
-
-    <div class="profile-card">
-      <h3>Added Products</h3>
-      <div class="profile-buttons">
-        <a href="/products">
-          <button >Go to Products</button>
-        </a>
-        <a href="/add-product"><button>Add Product</button></a> 
-
-      </div>
-    </div>
-  </div>
-</div>

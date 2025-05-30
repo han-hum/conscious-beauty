@@ -19,14 +19,68 @@
   });
 
   const deleteProduct = async (id) => {
-  const { error } = await supabase.from('products').delete().eq('id', id);
-  if (error) {
-    console.error('Delete error:', error.message);
-    return;
-  }
-  products = products.filter((p) => p.id !== id);
-};
+    const { error } = await supabase.from('products').delete().eq('id', id);
+    if (error) {
+      console.error('Delete error:', error.message);
+      return;
+    }
+    products = products.filter((p) => p.id !== id);
+  };
 </script>
+
+<div class="admin-container">
+  <h1>Welcome to ILUS.me, admin!</h1>
+  <p class="who" style="margin-top: 0.5rem;">Logged in as: {user?.email}</p>
+
+  <h2 style="margin-top: 2rem;">Admin Controls</h2>
+  <div class="grid">
+    <div class="card">
+      <h3>Page Management</h3>
+      <button class="btn">Settings</button>
+      <button class="btn">Layout</button>
+      <a href="/products">
+        <button class="btn">Go to Products</button>
+      </a>
+    </div>
+    <div class="card">
+      <h3>Data & Connections</h3>
+      <a href="https://supabase.com/">
+        <button class="btn">Supabase</button>
+      </a>
+      <a
+        href="https://openfoodfacts.github.io/openfoodfacts-server/api/ref-v2//"
+      >
+        <button class="btn">API</button>
+      </a>
+    </div>
+    <div class="card">
+      <h3>Recent Activity</h3>
+      <div style="height:100px; background:#ddd;">
+        <img src="/logoDark.png" alt="ILUS.me logo" class="logo-img" />
+      </div>
+    </div>
+    <div class="card">
+      <h3>Users</h3>
+      <a href="https://supabase.com/">
+        <button class="btn">Manage Users</button>
+      </a>
+    </div>
+  </div>
+
+  <h2 style="margin-top: 3rem;">Product Management</h2>
+  <div class="grid">
+    {#each products as product}
+      <div class="card">
+        <h4>{product.name}</h4>
+        <p>{product.brand}</p>
+        <p>{product.quantity}</p>
+        <button class="btn" on:click={() => deleteProduct(product.id)}
+          >Delete</button
+        >
+      </div>
+    {/each}
+  </div>
+</div>
 
 <style>
   .admin-container {
@@ -63,53 +117,3 @@
     text-align: left;
   }
 </style>
-
-<div class="admin-container">
-  <h1>Welcome to ILUS.me, admin!</h1>
-  <p class="who" style="margin-top: 0.5rem;">Logged in as: {user?.email}</p>
-
-  <h2 style="margin-top: 2rem;">Admin Controls</h2>
-  <div class="grid">
-    <div class="card">
-      <h3>Page Management</h3>
-      <button class="btn">Settings</button>
-      <button class="btn">Layout</button>
-      <a href="/products">
-        <button class="btn">Go to Products</button>
-      </a>
-    </div>
-    <div class="card">
-      <h3>Data & Connections</h3>
-      <a href="https://supabase.com/">
-        <button class="btn">Supabase</button>
-      </a>
-      <a href="https://openfoodfacts.github.io/openfoodfacts-server/api/ref-v2//">
-        <button class="btn">API</button>
-      </a> 
-    </div>
-    <div class="card">
-      <h3>Recent Activity</h3>
-      <div style="height:100px; background:#ddd;"><img src="/logoDark.png" alt="ILUS.me logo" class="logo-img" /></div>
-    </div>
-    <div class="card">
-      <h3>Users</h3>
-      <a href="https://supabase.com/">
-        <button class="btn">Manage Users</button>
-      </a>
-    </div>
-  </div>
-
-  <h2 style="margin-top: 3rem;">Product Management</h2>
-  <div class="grid">
-    {#each products as product}
-      <div class="card">
-        <h4>{product.name}</h4>
-        <p>{product.brand}</p>
-        <p>{product.quantity}</p>
-        <button class="btn" on:click={() => deleteProduct(product.id)}
-          >Delete</button
-        >
-      </div>
-    {/each}
-  </div>
-</div>

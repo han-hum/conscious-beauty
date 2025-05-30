@@ -1,49 +1,34 @@
-<style>
-  .grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 1.5rem;
-    margin-top: 2rem;
-  }
-  .card {
-    padding: 1rem;
-    border-radius: 1rem;
-    border-color: #fbe0c3;
-    background: #f8f8f8;
-    box-shadow: 0 1px 7px rgba(247, 70, 70, 0.1);
-  }
-  .btn {
-    margin-top: 0.5rem;
-    background: #8aa191;
-    color: #344648;
-    padding: 0.4rem 0.8rem;
-    border: none;
-    cursor: pointer;
-    border-radius: 0.25rem;
-  }
-  .btn:hover {
-    background: #fbe0c3;
-  }
-  p {
-    text-align: left;
-  }
-</style>
-
 <div>
   <div class="grid">
     <div class="card">
       <h1>About ILUS.me</h1>
       <img src="/logoDark.png" alt="ILUS.me logo" class="logo-img" />
-      <p>ILUS.me is a platform developed for promoting more conscious beauty product consumption by providing transparent and honest product information through user-friendly experience.</p>
-        <p>
-        It is inspired by Open Beauty Facts, but is a standalone environment. A built from zero front-end, new structural and user-centric features were developed to match the idea, demonstrating how open-source data can be used to engage the wider community.<br></p> 
-        <p>The platform was developed as a graduation project, but is going to be developed further into a working product.</p> 
-        <p>Although Open Beauty Facts is an open-source project, the usage of this current platform, its content and code is NOT allowed until further notice or until before it is discussed with the author of the project.</p>
-        <p>The current version is 1.0 that includes the basic functions and UI/UX. </p>
-        <p><br>More details are to come.<br><a
-          href=""
-          >Repository</a>
+      <p>
+        ILUS.me is a platform developed for promoting more conscious beauty
+        product consumption by providing transparent and honest product
+        information through user-friendly experience.
       </p>
+      <p>
+        It is inspired by Open Beauty Facts, but is a standalone environment. A
+        built from zero front-end, new structural and user-centric features were
+        developed to match the idea, demonstrating how open-source data can be
+        used to engage the wider community.<br />
+      </p>
+      <p>
+        The platform was developed as a graduation project, but is going to be
+        developed further into a working product.
+      </p>
+      <p>
+        Although Open Beauty Facts is an open-source project, the usage of this
+        current platform, its content and code is NOT allowed until further
+        notice or until before it is discussed with the author of the project.
+      </p>
+      <p>
+        The current version is 1.0 that includes the basic functions and UI/UX.
+      </p>
+      <p><br />More details are to come.<br /><a href="">Repository</a></p>
+      <br />
+      <a class="linkSize">Tutorial</a>
     </div>
     <div class="card">
       <h1>About Open Food Facts</h1>
@@ -74,3 +59,37 @@
     </div>
   </div>
 </div>
+
+<style>
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+  .card {
+    padding: 1rem;
+    border-radius: 1rem;
+    border-color: #fbe0c3;
+    background: #f8f8f8;
+    box-shadow: 0 1px 7px rgba(247, 70, 70, 0.1);
+  }
+  .btn {
+    margin-top: 0.5rem;
+    background: #8aa191;
+    color: #344648;
+    padding: 0.4rem 0.8rem;
+    border: none;
+    cursor: pointer;
+    border-radius: 0.25rem;
+  }
+  .btn:hover {
+    background: #fbe0c3;
+  }
+  p {
+    text-align: left;
+  }
+  .linkSize {
+    font-size: xx-small;
+  }
+</style>

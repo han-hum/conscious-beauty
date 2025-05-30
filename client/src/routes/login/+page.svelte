@@ -1,6 +1,5 @@
 <script>
   // @ts-nocheck
-
   import { supabase } from '$lib/supabaseClient';
   import { goto } from '$app/navigation';
   import { onMount } from 'svelte';
@@ -43,6 +42,39 @@
     }
   };
 </script>
+
+<h1>Login / Sign Up</h1>
+
+<a href="/" class="logo-container">
+  <img src="/logoDark.png" alt="ILUS.me logo" class="logo-img" />
+</a>
+
+<form
+  on:submit|preventDefault={(e) => {
+    // eslint-disable-next-line
+    const action = e.submitter?.name;
+
+    if (action === 'login') handleLogin();
+    else if (action === 'signup') handleSignUp();
+  }}
+>
+  <input type="email" placeholder="Email" bind:value={email} required />
+  <input
+    type="password"
+    placeholder="Password"
+    bind:value={password}
+    required
+  />
+  <button type="submit" name="login">Log In</button>
+  <button type="submit" name="signup">Sign Up</button>
+</form>
+
+{#if message}
+  <p style="color: green;">{message}</p>
+{/if}
+{#if error}
+  <p style="color: red;">{error}</p>
+{/if}
 
 <style>
   form {
@@ -93,36 +125,3 @@
     margin: auto;
   }
 </style>
-
-<h1>Login / Sign Up</h1>
-
-<a href="/" class="logo-container">
-  <img src="/logoDark.png" alt="ILUS.me logo" class="logo-img" />
-</a>
-
-<form
-  on:submit|preventDefault={(e) => {
-    // eslint-disable-next-line
-    const action = e.submitter?.name;
-
-    if (action === 'login') handleLogin();
-    else if (action === 'signup') handleSignUp();
-  }}
->
-  <input type="email" placeholder="Email" bind:value={email} required />
-  <input
-    type="password"
-    placeholder="Password"
-    bind:value={password}
-    required
-  />
-  <button type="submit" name="login">Log In</button>
-  <button type="submit" name="signup">Sign Up</button>
-</form>
-
-{#if message}
-  <p style="color: green;">{message}</p>
-{/if}
-{#if error}
-  <p style="color: red;">{error}</p>
-{/if}

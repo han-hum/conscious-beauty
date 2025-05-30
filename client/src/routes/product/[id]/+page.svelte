@@ -8,7 +8,9 @@
   let user = null;
 
   onMount(async () => {
-    const { data: { session } } = await supabase.auth.getSession();
+    const {
+      data: { session },
+    } = await supabase.auth.getSession();
     user = session?.user;
 
     const id = $page.params.id;

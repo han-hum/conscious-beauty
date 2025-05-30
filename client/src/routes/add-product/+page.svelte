@@ -21,26 +21,44 @@
   });
 
   const handleSubmit = async () => {
-  if (!name.trim() || !description.trim() || !image_url.trim()) {
-    message = 'Please fill in all fields.';
-    return;
-  }
+    if (!name.trim() || !description.trim() || !image_url.trim()) {
+      message = 'Please fill in all fields.';
+      return;
+    }
 
-  const { error } = await supabase
-    .from('products')
-    .insert([{ name, description, image_url }]);
+    const { error } = await supabase
+      .from('products')
+      .insert([{ name, description, image_url }]);
 
-  if (error) {
-    message = 'Error adding product: ' + error.message;
-  } else {
-    message = 'Product added successfully!';
-    name = '';
-    description = '';
-    image_url = '';
-  }
-};
-
+    if (error) {
+      message = 'Error adding product: ' + error.message;
+    } else {
+      message = 'Product added successfully!';
+      name = '';
+      description = '';
+      image_url = '';
+    }
+  };
 </script>
+
+<section class="admin-form">
+  <h1>Add New Product</h1>
+
+  <div class="form-card">
+    <label>Name</label>
+    <input bind:value={name} placeholder="Enter product name" />
+
+    <label>Description</label>
+    <textarea bind:value={description} placeholder="Enter description"
+    ></textarea>
+
+    <label>Image URL</label>
+    <input bind:value={image_url} placeholder="Enter image URL" />
+
+    <button on:click={handleSubmit}>Add Product</button>
+    {#if message}<p class="message">{message}</p>{/if}
+  </div>
+</section>
 
 <style>
   .admin-form {
@@ -77,22 +95,3 @@
     color: green;
   }
 </style>
-
-<section class="admin-form">
-  <h1>Add New Product</h1>
-
-  <div class="form-card">
-    <label>Name</label>
-    <input bind:value={name} placeholder="Enter product name" />
-
-    <label>Description</label>
-    <textarea bind:value={description} placeholder="Enter description"
-    ></textarea>
-
-    <label>Image URL</label>
-    <input bind:value={image_url} placeholder="Enter image URL" />
-
-    <button on:click={handleSubmit}>Add Product</button>
-    {#if message}<p class="message">{message}</p>{/if}
-  </div>
-</section>

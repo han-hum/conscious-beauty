@@ -10,7 +10,7 @@
   <img
     src={image}
     alt={name}
-    on:error={(e) => e.target.src = '/photos/fallback2.jpg'}
+    on:error={(e) => (e.target.src = '/photos/fallback2.jpg')}
     loading="lazy"
   />
 

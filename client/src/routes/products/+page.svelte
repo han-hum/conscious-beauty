@@ -13,7 +13,7 @@
   const fallbackProducts = [
     {
       name: 'Gentle Cleanser',
-      image_url: '/photos/fallback1.jpg',
+      image_url: '/photos/fallback.png',
       description: 'A soft, fragrance-free facial cleanser.'
     },
     {
@@ -28,17 +28,17 @@
     },
     {
       name: 'Micellar Water',
-      image_url: '/photos/fallback4.jpg',
+      image_url: '/photos/fallback.png',
       description: 'Gently removes makeup and cleans skin.'
     },
     {
       name: 'SPF 50 Sunscreen',
-      image_url: '/photos/fallback5.jpg',
+      image_url: '/photos/fallback2.jpg',
       description: 'Daily UV protection with lightweight feel.'
     },
     {
       name: 'Aloe Gel',
-      image_url: '/photos/fallback6.jpg',
+      image_url: '/photos/fallback.png',
       description: 'Soothing gel for irritated or dry skin.'
     }
   ];
