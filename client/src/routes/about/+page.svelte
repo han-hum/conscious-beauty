@@ -26,7 +26,8 @@
       <p>
         The current version is 1.0 that includes the basic functions and UI/UX.
       </p>
-      <p><br />More details are to come.<br /><a href="">Repository</a></p>
+      <p><br />More details are to come.<br /><a href="https://github.com">Repository</a>
+      </p>
       <br />
       <a class="linkSize">Tutorial</a>
     </div>
