@@ -27,3 +27,5 @@ vite.config.ts.timestamp-*
 
 .svelte-kit/
 build/
+dist/
+client/build
