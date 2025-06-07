@@ -29,3 +29,6 @@ vite.config.ts.timestamp-*
 build/
 dist/
 client/build
+
+# macOS system files
+.DS_Store
