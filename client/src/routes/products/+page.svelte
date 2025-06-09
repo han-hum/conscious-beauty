@@ -182,10 +182,11 @@
   {#each filteredProducts as product}
     <div class="product-card">
       <img
-        src={product.image_url}
-        alt={product.name}
-        on:error={(e) => (e.target.src = '/photos/fallback1.jpg')}
-      />
+      src={product.image_url || '/photos/fallback.png'}
+      alt={product.name}
+      loading="lazy"
+      on:error={(e) => (e.target.src = '/photos/fallback.png')}
+    />    
       <h3>{product.name}</h3>
       <p>{product.description}</p>
     </div>

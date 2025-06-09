@@ -3,6 +3,15 @@
   import { supabase } from '$lib/supabaseClient';
   import { goto } from '$app/navigation';
   import { onMount } from 'svelte';
+  import { PUBLIC_ADMIN_EMAIL } from '$env/static/public';
+
+
+  let user = null;
+
+onMount(async () => {
+  const { data: { session } } = await supabase.auth.getSession();
+  user = session?.user;
+});
 
   let email = '';
   let password = '';
@@ -10,20 +19,34 @@
   let message = '';
 
   const handleLogin = async () => {
-    const { error: loginError } = await supabase.auth.signInWithPassword({
-      email,
-      password,
-    });
+  const { error: loginError, data } = await supabase.auth.signInWithPassword({
+    email,
+    password
+  });
 
-    if (loginError) {
-      error = loginError.message;
-      message = '';
+  if (loginError) {
+    error = loginError.message;
+    message = '';
+  } else {
+    message = 'Logged in successfully!';
+    error = '';
+
+    // force-fetch user
+    const {
+      data: { session }
+    } = await supabase.auth.getSession();
+
+    const loggedInEmail = session?.user?.email;
+
+    if (loggedInEmail === PUBLIC_ADMIN_EMAIL) {
+      goto('/admin');
     } else {
-      message = 'Logged in successfully!';
-      error = '';
       goto('/profile');
     }
-  };
+  }
+};
+
+
 
   const handleSignUp = async () => {
     console.log('SIGNUP ATTEMPT:', { email, password });
@@ -75,6 +98,13 @@
 {#if error}
   <p style="color: red;">{error}</p>
 {/if}
+
+{#if user?.email === PUBLIC_ADMIN_EMAIL}
+  <button class="nav-button" on:click={() => goto('/admin')}>
+    Go to Admin Panel
+  </button>
+{/if}
+
 
 <style>
   form {
